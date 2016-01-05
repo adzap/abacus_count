@@ -23,7 +23,7 @@ module AbacusCount
       select_value = operation_over_aggregate_column(column_alias, operation, distinct)
       query_builder = sm.project(select_value).from(subquery)
 
-      type_cast_calculated_value(@klass.connection.select_value(query_builder.to_sql), column_for(column_name), operation)
+      type_cast_calculated_value(@klass.connection.select_value(query_builder.to_sql), type_for(column_name), operation)
     end
 
     def build_subquery(relation, aliaz)
